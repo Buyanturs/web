@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Document</title>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-start justify-center p-4">
+    <div class="w-full max-w-5xl space-y-4">
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h1 class="text-2xl font-semibold mb-2">Product Add System</h1>
+            <p class="text-gray-500 text-sm mb-6">Product нэр, үнэ, description.</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+            <input id="name" type="text" placeholder="Product name" class="border rounded-lg px-3 py-2 w-full">
+            <input id="price" type="number" placeholder="Price" class="border rounded-lg px-3 py-2 w-full">
+            <input id="desc" type="text" placeholder="Description" class="border rounded-lg px-3 py-2 w-full md:col-span-2">
+            <button onclick="add()" class="bg-blue-500 text-white rounded-lg px-4 py-2">Add</button>
+            </div>
+        </div>
+        <div id="list" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    </div>
+    <script>
+        const ne=document.getElementById("name")
+        const pe=document.getElementById("price")
+        const de=document.getElementById("desc")
+        const l=document.getElementById("list")
+        function add(){
+            let n=ne.value, p=pe.value, d=de.value
+            if(!n || !p) return
+            let div=document.createElement("div")
+            div.className="bg-white p-4 rounded-xl shadow"
+            div.innerHTML=`
+                <h2>${n}</h2>
+                <p>$${p}</p>
+                <p>${d}</p>
+                <button onclick="this.parentElement.remove()" class="text-red-500 mt-2">x</button>
+            `
+            l.appendChild(div)
+            na.value=pe.value=de.value=""
+        }
+    </script>
+</body> 
+</html>
